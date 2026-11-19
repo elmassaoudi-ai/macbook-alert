@@ -1,15 +1,15 @@
 import os
 import requests
 
-TOKEN = os.environ["TELEGRAM_TOKEN"]
-CHAT_ID = os.environ["CHAT_ID"]
+token = os.environ["TELEGRAM_TOKEN"]
+chat_id = os.environ["CHAT_ID"]
 
-message = "✅ MacBook-Alarm erfolgreich gestartet."
-
-requests.post(
-    f"https://api.telegram.org/bot{TOKEN}/sendMessage",
+r = requests.post(
+    f"https://api.telegram.org/bot{token}/sendMessage",
     json={
-        "chat_id": CHAT_ID,
-        "text": message
+        "chat_id": chat_id,
+        "text": "✅ Testnachricht vom MacBook-Alarm"
     }
 )
+
+print(r.text)
