@@ -1,15 +1,13 @@
-import os
 import requests
 
-token = os.environ["TELEGRAM_TOKEN"]
-chat_id = os.environ["CHAT_ID"]
+url = "https://www.amazon.de/s?k=macbook&i=warehouse-deals&srs=3581963031"
 
-r = requests.post(
-    f"https://api.telegram.org/bot{token}/sendMessage",
-    json={
-        "chat_id": chat_id,
-        "text": "✅ Testnachricht vom MacBook-Alarm"
+r = requests.get(
+    url,
+    headers={
+        "User-Agent": "Mozilla/5.0"
     }
 )
 
-print(r.text)
+print("Status:", r.status_code)
+print(r.text[:500])
